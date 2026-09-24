@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flour N Fancy | Artisanal Bakery & Patisserie</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0a08;
+            --surface-color: #141210;
+            --surface-card: #1c1916;
+            --gold: #d4af37;
+            --gold-light: #f3e5ab;
+            --text-main: #f5f0eb;
+            --text-muted: #a39c94;
+            --zomato-red: #e23744;
+            --whatsapp-green: #25d366;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .brand-font {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 2px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(11,10,8,0.95), rgba(11,10,8,0));
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(rgba(11, 10, 8, 0.65), rgba(11, 10, 8, 0.85)), 
+                        url('https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+            padding: 0 20px;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            color: var(--gold-light);
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            transition: all 0.4s ease;
+            background: rgba(0,0,0,0.4);
+            border-radius: 2px;
+        }
+
+        .cta-btn:hover {
+            background: var(--gold);
+            color: var(--bg-color);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .cta-btn.zomato {
+            border-color: var(--zomato-red);
+            color: #fff;
+            background: var(--zomato-red);
+        }
+
+        .cta-btn.zomato:hover {
+            background: #c02531;
+            box-shadow: 0 0 25px rgba(226, 55, 68, 0.5);
+        }
+
+        .cta-btn.whatsapp {
+            border-color: var(--whatsapp-green);
+            color: #fff;
+            background: var(--whatsapp-green);
+        }
+
+        .cta-btn.whatsapp:hover {
+            background: #1eb954;
+            box-shadow: 0 0 25px rgba(37, 211, 102, 0.5);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 60px;
+            font-size: 0.95rem;
+        }
+
+        /* Story Section */
+        .story-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .story-text p {
+            margin-bottom: 20px;
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .story-highlights {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .highlight-card {
+            background: var(--surface-card);
+            padding: 20px;
+            border-left: 2px solid var(--gold);
+            flex: 1;
+        }
+
+        .highlight-card h4 {
+            color: var(--gold-light);
+            margin-bottom: 5px;
+        }
+
+        .story-img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 4px;
+            filter: brightness(0.85) contrast(1.1);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        }
+
+        /* Menu Grid */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-card {
+            background: var(--surface-card);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .menu-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+
+        .menu-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            filter: brightness(0.9);
+        }
+
+        .menu-card-content {
+            padding: 25px;
+        }
+
+        .menu-card h3 {
+            color: var(--gold-light);
+            margin-bottom: 10px;
+        }
+
+        .menu-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        /* Expanded Cake Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 320px;
+            overflow: hidden;
+            border-radius: 4px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            filter: brightness(0.82);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+            filter: brightness(1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: var(--gold-light);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        /* Reviews Section */
+        .reviews-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            background: var(--surface-card);
+            padding: 30px;
+            border-radius: 4px;
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+        }
+
+        .stars {
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .review-text {
+            color: var(--text-muted);
+            font-style: italic;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        /* Contact & Details */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            background: var(--surface-color);
+            padding: 50px;
+            border-radius: 4px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .info-item {
+            margin-bottom: 25px;
+        }
+
+        .info-item h4 {
+            color: var(--gold);
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .info-item p {
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: #050504;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Floating Order Widget */
+        .floating-order {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 1000;
+        }
+
+        .float-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .float-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .float-whatsapp {
+            background-color: var(--whatsapp-green);
+        }
+
+        .float-zomato {
+            background-color: var(--zomato-red);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            .story-container, .contact-grid { grid-template-columns: 1fr; }
+            nav { padding: 15px 20px; flex-direction: column; gap: 10px; }
+            section { padding: 60px 5%; }
+            .hero-actions { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">Flour N Fancy</a>
+        <ul class="nav-links">
+            <li><a href="#about">Our Story</a></li>
+            <li><a href="#creations">Creations</a></li>
+            <li><a href="#gallery">Cake Gallery</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#contact">Order Now</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1 class="hero-title">Flour N Fancy</h1>
+        <p class="hero-subtitle">Artisanal Cakes, Gooey Fudgy Brownies, & Handcrafted Pure Ghee Cookies</p>
+        <div class="hero-actions">
+            <a href="https://wa.me/916232335051?text=Hello%20Flour%20N%20Fancy,%20I%20would%20like%20to%20order%20a%20cake!" target="_blank" class="cta-btn whatsapp">Order on WhatsApp</a>
+            <a href="https://www.zomato.com/durg-bhilai/flour-n-fancy-1-durg/order" target="_blank" class="cta-btn zomato">Order on Zomato</a>
+        </div>
+    </header>
+
+    <!-- Story Section -->
+    <section id="about">
+        <h2 class="section-title">Pure Passion & Flavor</h2>
+        <p class="section-subtitle">Crafted with pure ingredients in Durg, Chhattisgarh</p>
+        
+        <div class="story-container">
+            <div class="story-text">
+                <p>Welcome to <strong>Flour N Fancy</strong>, a women-owned bakery where baking is treated as an art form. Every creation is crafted with pure ingredients, authentic passion, and strict quality standards.</p>
+                <p>From rich, fudge-like brownies to signature coconut cookies and tailor-made custom birthday cakes, we believe every bite should offer pure bliss.</p>
+                
+                <div class="story-highlights">
+                    <div class="highlight-card">
+                        <h4>Pure Ingredients</h4>
+                        <p>Baked fresh using pure ghee and top-tier ingredients.</p>
+                    </div>
+                    <div class="highlight-card">
+                        <h4>Women Owned</h4>
+                        <p>Dedicated to delivering home-style warm hospitality.</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1000&auto=format&fit=crop" alt="Baking Process" class="story-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Creations / Menu Section -->
+    <section id="creations" style="background-color: var(--surface-color);">
+        <h2 class="section-title">Signature Offerings</h2>
+        <p class="section-subtitle">Freshly baked delicacies crafted daily</p>
+
+        <div class="menu-grid">
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1535141192574-5d4897c13136?q=80&w=800&auto=format&fit=crop" alt="Custom Celebration Cakes">
+                <div class="menu-card-content">
+                    <h3>Custom Celebration Cakes</h3>
+                    <p>Moist, soft-textured cakes handcrafted for birthdays, weddings, and special milestones.</p>
+                    <a href="https://wa.me/916232335051?text=Hi,%20I'm%20interested%20in%20ordering%20a%20Custom%20Celebration%20Cake!" target="_blank" class="cta-btn whatsapp" style="display:block; text-align:center; padding: 10px;">Order Cake on WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=800&auto=format&fit=crop" alt="Fudge Brownies">
+                <div class="menu-card-content">
+                    <h3>Gooey Fudge Brownies</h3>
+                    <p>Rich, chocolate-loaded brownies featuring an ultra-fudgy center and crackly crust.</p>
+                    <a href="https://www.zomato.com/durg-bhilai/flour-n-fancy-1-durg/order" target="_blank" class="cta-btn zomato" style="display:block; text-align:center; padding: 10px;">Order Brownies on Zomato</a>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?q=80&w=800&auto=format&fit=crop" alt="Pure Ghee Cookies">
+                <div class="menu-card-content">
+                    <h3>Coconut & Ghee Cookies</h3>
+                    <p>Crisp, golden-baked signature coconut cookies prepared with authentic pure ghee.</p>
+                    <a href="https://www.zomato.com/durg-bhilai/flour-n-fancy-1-durg/order" target="_blank" class="cta-btn zomato" style="display:block; text-align:center; padding: 10px;">Order Cookies on Zomato</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cake Gallery Showcase -->
+    <section id="gallery">
+        <h2 class="section-title">Cake Gallery</h2>
+        <p class="section-subtitle">A showcase of our custom birthday & celebration cakes</p>
+
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/7978137493224934017_0" alt="Artisanal Chocolate Ganache Cake">
+                <div class="gallery-overlay">Artisanal Dark Chocolate Ganache Cake</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?q=80&w=800&auto=format&fit=crop" alt="Velvet Floral Cake">
+                <div class="gallery-overlay">Classic Layered Birthday Cake</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&w=800&auto=format&fit=crop" alt="Berry Drizzle Cake">
+                <div class="gallery-overlay">Fresh Berry Drizzle Cake</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1519869325930-281384150729?q=80&w=800&auto=format&fit=crop" alt="Custom Celebration Cake">
+                <div class="gallery-overlay">Special Event Multi-Tier Cake</div>
+            </div>
+            <div class="gallery-item">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/7978137493224934017_1" alt="Rich Cocoa Cake">
+                <div class="gallery-overlay">Signature Chocolate Fudge Cake</div>
+            </div>
+            <div class="gallery-item">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/7978137493224934017_2" alt="Handcrafted Floral Cake">
+                <div class="gallery-overlay">Handcrafted Floral Celebration Cake</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" style="background-color: var(--surface-color);">
+        <h2 class="section-title">Customer Feedback</h2>
+        <p class="section-subtitle">Rated 5.0 Stars by local dessert lovers</p>
+
+        <div class="reviews-container">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"Ordered a cake from Flour N Fancy, and it completely exceeded my expectation! The presentation was stunning and texture was so soft & fresh."</p>
+                <p style="color: var(--gold-light); font-weight: 600;">— Verified Customer</p>
+            </div>
+
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"Amazing Cakes & cookies. Really fresh. Brownie especially is really fudge & gooey. Loved them!"</p>
+                <p style="color: var(--gold-light); font-weight: 600;">— Verified Customer</p>
+            </div>
+
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"Available cakes 24*7 made of Pure Ghee and Pure ingredients. Presentation was stunning!"</p>
+                <p style="color: var(--gold-light); font-weight: 600;">— Local Patron</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Order Directly</h2>
+        <p class="section-subtitle">Get in touch for custom cake orders or fast delivery</p>
+
+        <div class="contact-grid">
+            <div>
+                <div class="info-item">
+                    <h4>Address</h4>
+                    <p>Flat No. 504, LIG, Vardhman Heights,<br>Ganjpara, Durg, Chhattisgarh 491001</p>
+                </div>
+                <div class="info-item">
+                    <h4>Phone / WhatsApp</h4>
+                    <p>+91 62323 35051</p>
+                </div>
+                <div class="info-item">
+                    <h4>Working Hours</h4>
+                    <p>Open 24 Hours / 7 Days a Week</p>
+                </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; justify-content: center; gap: 15px;">
+                <h3 style="color: var(--gold-light);">Ready to Place an Order?</h3>
+                <p style="color: var(--text-muted);">Place an immediate online order via Zomato or contact us on WhatsApp to order custom cakes.</p>
+                <a href="https://wa.me/916232335051?text=Hi%20Flour%20N%20Fancy,%20I'd%20like%20to%20place%20an%20order!" target="_blank" class="cta-btn whatsapp" style="text-align: center;">Chat & Order on WhatsApp</a>
+                <a href="https://www.zomato.com/durg-bhilai/flour-n-fancy-1-durg/order" target="_blank" class="cta-btn zomato" style="text-align: center;">Order Online on Zomato</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Order Quick Buttons -->
+    <div class="floating-order">
+        <a href="https://wa.me/916232335051?text=Hi%20Flour%20N%20Fancy,%20I'd%20like%20to%20order!" target="_blank" class="float-btn float-whatsapp" title="WhatsApp Order">WA</a>
+        <a href="https://www.zomato.com/durg-bhilai/flour-n-fancy-1-durg/order" target="_blank" class="float-btn float-zomato" title="Order on Zomato">Z</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Flour N Fancy, Durg. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
